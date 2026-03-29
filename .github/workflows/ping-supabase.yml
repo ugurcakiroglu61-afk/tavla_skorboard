@@ -1,0 +1,14 @@
+name: Ping Supabase
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping version.json
+        run: |
+          curl -fSL --max-time 20 "https://vfqptglygnsihyhymzck.supabase.co/storage/v1/object/public/app-updates/version.json" > /dev/null
